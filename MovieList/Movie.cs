@@ -47,5 +47,20 @@ public class Movie
         
     }
 
+    
+    public override string ToString()
+    {
+        string result = $"#{Id} {Title} ({Year})";
+        if (Genre != null)
+        {
+            result += $" - {Genre}";
+        }
+        if (IsWatched)
+        {
+            result += $" [Watched]";
+        }
+        return result;
+    }
+
 }
 
