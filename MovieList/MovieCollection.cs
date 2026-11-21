@@ -51,6 +51,20 @@ public class MovieCollection
                         
     }
 
+    public Movie Remove(int id)
+    {
+        Movie movie = FindById(id);
+        _movies.Remove(movie);
+        return movie;
+    }
+
+    public Movie MarkAsWatched(int id)
+    {
+        Movie movie = FindById(id);
+        movie.MarkAsWatched();
+        return movie;
+    }
+
     private Movie FindById(int id)
     {
         Movie? movie = _movies.FirstOrDefault(m => m.Id == id);
