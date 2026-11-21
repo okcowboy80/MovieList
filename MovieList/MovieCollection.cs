@@ -50,5 +50,18 @@ public class MovieCollection
         return filteredMovies.AsReadOnly();
                         
     }
+
+    private Movie FindById(int id)
+    {
+        Movie? movie = _movies.FirstOrDefault(m => m.Id == id);
+
+        if (movie == null)
+        {
+            throw new KeyNotFoundException($"No movie found with ID {id}.");
+        }
+
+        return movie;
+    }
+
 }
 
