@@ -46,4 +46,17 @@ public class MovieStorage
         
     }
 
+    public IReadOnlyList<Movie> Load()
+    {
+        if(!File.Exists(_filePath))
+        {
+            return new List<Movie>().AsReadOnly(); 
+        }
+
+        string movieText = File.ReadAllText(_filePath);
+        List<Movie>? movies = JsonSerializer.Deserialize<List<Movie>>(movieText, _jsonOptions);
+
+        return (movies ?? new List<Movie>()).AsReadOnly();
+    }
+
 }
